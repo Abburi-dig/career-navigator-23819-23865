@@ -1,358 +1,82 @@
-:root {
-  --bg: #0b1020;
-  --panel: rgba(255, 255, 255, 0.06);
-  --panel-2: rgba(255, 255, 255, 0.10);
-  --text: rgba(255, 255, 255, 0.92);
-  --muted: rgba(255, 255, 255, 0.70);
-  --border: rgba(255, 255, 255, 0.14);
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
 
-  --primary: #7c5cff;
-  --primary-2: #4dd4ff;
-  --ok: #2dd4bf;
-  --warn: #fbbf24;
-  --danger: #fb7185;
-
-  --radius: 14px;
-}
-
+/* Match the HTML prototype baseline exactly */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji",
-    "Segoe UI Emoji";
-  color: var(--text);
-  background: radial-gradient(1200px 600px at 10% 10%, rgba(124, 92, 255, 0.25), transparent 60%),
-    radial-gradient(1000px 500px at 90% 30%, rgba(77, 212, 255, 0.18), transparent 60%),
-    var(--bg);
-}
-
-a {
-  color: inherit;
-}
-
-.h1 {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.h2 {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.h3 {
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.muted {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.mt-sm {
-  margin-top: 10px;
-}
-
-.mt-md {
-  margin-top: 14px;
-}
-
-.stack-sm > * + * {
-  margin-top: 8px;
-}
-
-.stack-md > * + * {
-  margin-top: 12px;
-}
-
-.stack-lg > * + * {
-  margin-top: 18px;
-}
-
-.row {
-  display: flex;
-  align-items: center;
-}
-
-.row-between {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-}
-
-.gap-md {
-  gap: 12px;
-}
-
-.wrap {
-  flex-wrap: wrap;
-}
-
-.center-page {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-}
-
-.card {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.04));
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px;
-  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
-}
-
-.card.compact {
-  padding: 12px;
-  width: 220px;
-}
-
-.card.error {
-  border-color: rgba(251, 113, 133, 0.4);
-}
-
-.card.ok {
-  border-color: rgba(45, 212, 191, 0.4);
-}
-
-.card.selectable {
-  text-align: left;
-  cursor: pointer;
-  transition: transform 120ms ease, border-color 120ms ease;
-}
-
-.card.selectable:hover {
-  transform: translateY(-2px);
-  border-color: rgba(124, 92, 255, 0.45);
-}
-
-.card.selectable.selected {
-  border-color: rgba(77, 212, 255, 0.55);
-  background: linear-gradient(180deg, rgba(77, 212, 255, 0.10), rgba(255, 255, 255, 0.04));
-}
-
-.btn {
-  appearance: none;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: linear-gradient(180deg, rgba(124, 92, 255, 0.95), rgba(124, 92, 255, 0.75));
-  color: white;
-  padding: 10px 12px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 700;
-}
-
-.btn:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-
-.btn.btn-secondary {
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.input {
+body,
+#root {
   width: 100%;
-  padding: 10px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(0, 0, 0, 0.25);
-  color: var(--text);
-}
-
-.field .label {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--muted);
-  margin-bottom: 6px;
-}
-
-.pill {
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.06);
-  font-size: 12px;
-  color: var(--muted);
-}
-
-.badge {
-  padding: 5px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--muted);
-}
-
-.badge.ok {
-  border-color: rgba(45, 212, 191, 0.45);
-  color: rgba(45, 212, 191, 0.95);
-}
-
-.badge.warn {
-  border-color: rgba(251, 191, 36, 0.45);
-  color: rgba(251, 191, 36, 0.95);
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.tag {
-  font-size: 12px;
-  padding: 5px 10px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: var(--muted);
-}
-
-.progress {
-  height: 10px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  height: 100%;
   overflow: hidden;
 }
 
-.progress-bar {
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--primary), var(--primary-2));
+body {
+  background: #080c14;
+  font-family: "DM Sans", sans-serif;
 }
 
-.skeleton-title {
-  width: 55%;
-  height: 16px;
-  background: rgba(255, 255, 255, 0.10);
-  border-radius: 8px;
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(58, 175, 185, 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(58, 175, 185, 0.4);
 }
 
-.skeleton-line {
-  width: 100%;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
+/* Focus/active behaviors from prototype */
+textarea:focus,
+input:focus {
+  border-color: rgba(58, 175, 185, 0.35) !important;
+}
+button:active {
+  transform: scale(0.97) !important;
 }
 
-.app-shell {
-  min-height: 100vh;
-}
+/* ------------------------------------------------------------------ */
+/* The following classes are used by the React implementation of the
+   prototype UI (kept minimal; most styling is inline to match prototype). */
 
-.topbar {
-  height: 64px;
+.cn-app {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-  background: rgba(0, 0, 0, 0.20);
-  backdrop-filter: blur(10px);
-  position: sticky;
-  top: 0;
+  min-height: 100vh;
+  background: #080c14;
+  font-family: "DM Sans", sans-serif;
+}
+
+.cn-main {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.cn-sidebar {
+  width: 230px;
+  min-height: 100vh;
+  background: rgba(8, 12, 20, 0.92);
+  backdrop-filter: blur(40px);
+  border-right: 1px solid rgba(58, 175, 185, 0.12);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
   z-index: 10;
 }
 
-.brand {
-  font-weight: 900;
-  letter-spacing: -0.02em;
+/* Keep links neutral; prototype uses buttons, but some components still use <a>. */
+a {
+  color: inherit;
   text-decoration: none;
-}
-
-.body {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  min-height: calc(100vh - 64px);
-}
-
-.sidebar {
-  padding: 14px;
-  border-right: 1px solid rgba(255, 255, 255, 0.10);
-  background: rgba(0, 0, 0, 0.18);
-}
-
-.nav {
-  display: block;
-  padding: 10px 12px;
-  border-radius: 12px;
-  text-decoration: none;
-  color: var(--muted);
-  border: 1px solid transparent;
-  margin-bottom: 10px;
-}
-
-.nav.active {
-  color: var(--text);
-  background: rgba(124, 92, 255, 0.14);
-  border-color: rgba(124, 92, 255, 0.30);
-}
-
-.content {
-  padding: 18px;
-  max-width: 1100px;
-}
-
-.grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.auth-card {
-  width: min(520px, 100%);
-}
-
-.chip {
-  display: inline-flex;
-  gap: 8px;
-  align-items: center;
-  padding: 8px 10px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: var(--muted);
-  cursor: pointer;
-}
-
-.task {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--text);
-}
-
-.task-done {
-  color: rgba(255, 255, 255, 0.65);
-  text-decoration: line-through;
-}
-
-@media (max-width: 900px) {
-  .body {
-    grid-template-columns: 1fr;
-  }
-  .sidebar {
-    display: none;
-  }
-  .grid-2 {
-    grid-template-columns: 1fr;
-  }
-  .content {
-    max-width: 100%;
-  }
 }
