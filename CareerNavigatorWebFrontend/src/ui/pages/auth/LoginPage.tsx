@@ -12,13 +12,30 @@ export function LoginPage() {
   const navigate = useNavigate();
   const [hov, setHov] = useState<"user" | "admin" | null>(null);
 
-  const onLogin = (role: "user" | "admin") => {
-    // Prototype is a role switcher, not a credential form.
-    // We keep auth token mechanics satisfied with a lightweight "login".
-    auth.login({
-      token: `prototype-${role}`,
-      email: role === "admin" ? "admin@digitalt3.example" : "navigator@digitalt3.example",
-    });
+  const getEmailForRole = (role: "user" | "admin") =>
+    role === "admin" ? "admin@digitalt3.example" : "navigator@digitalt3.example";
+
+  const PROTOTYPE_PASSWORD = "prototype-password";
+
+  const onLogin = async (role: "user" | "admin") => {
+    /**
+     * Step-05 happy path integration:
+     * - Use a deterministic email per role.
+     * - Try to register first (fresh DB), fallback to login (already registered).
+     *
+     * This preserves the prototype's "role selector" UX while still exercising:
+     * - frontend -> backend CORS
+     * - auth token handling (Bearer JWT)
+     * - backend-protected endpoints post-login
+     */
+    const email = getEmailForRole(role);
+
+    try {
+      await auth.register({ email, password: PROTOTYPE_PASSWORD });
+    } catch {
+      await auth.login({ email, password: PROTOTYPE_PASSWORD });
+    }
+
     localStorage.setItem("cn_role", role);
     localStorage.removeItem("cn_pathMode");
     navigate("/app", { replace: true });
@@ -92,7 +109,7 @@ export function LoginPage() {
                 key={r.role}
                 onMouseEnter={() => setHov(r.role)}
                 onMouseLeave={() => setHov(null)}
-                onClick={() => onLogin(r.role)}
+                onClick={() => void onLogin(r.role)}
                 style={{
                   width: 250,
                   padding: 28,
