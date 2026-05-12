@@ -250,7 +250,7 @@ type BtnVariant = "primary" | "ghost" | "coral";
  */
 export function Btn(props: {
   children: React.ReactNode;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   variant?: BtnVariant;
   style?: React.CSSProperties;
   disabled?: boolean;
