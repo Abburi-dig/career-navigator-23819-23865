@@ -1,1 +1,3 @@
-# career-navigator-23819-23865
+# Project Repository
+
+This is the initial README file for the project.
