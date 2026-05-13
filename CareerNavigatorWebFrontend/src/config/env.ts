@@ -18,7 +18,7 @@ function readBool(value: string | undefined, defaultValue: boolean): boolean {
 
 export function getFrontendEnv(): FrontendEnv {
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3001";
-  const useStubApi = readBool(import.meta.env.VITE_USE_STUB_API, true);
+  const useStubApi = readBool(import.meta.env.VITE_USE_STUB_API, false);
 
   return { apiBaseUrl, useStubApi };
 }

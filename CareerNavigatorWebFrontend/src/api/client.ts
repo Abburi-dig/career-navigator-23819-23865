@@ -52,8 +52,13 @@ export class ApiClient {
       Accept: "application/json",
     };
 
-    const token = this.getAccessToken?.();
-    if (token) headers.Authorization = `Bearer ${token}`;
+    // Auth endpoints should not require Authorization.
+    // All other endpoints are protected and require a Bearer token.
+    const isAuthRoute = path.startsWith("/auth/");
+    if (!isAuthRoute) {
+      const token = this.getAccessToken?.();
+      if (token) headers.Authorization = `Bearer ${token}`;
+    }
 
     let fetchBody: BodyInit | undefined = undefined;
     if (body !== undefined) {
